@@ -1,6 +1,6 @@
 import numpy as np
-from Inputs import InputReader
-from matplotlib import pyplot
+
+import InputReader
 
 
 class runner:
@@ -38,7 +38,7 @@ class runner:
 
 def run():
     r = runner()
-    data = InputReader.read("Inputs/1.txt")[0].replace(' ', '').split(',')
+    data = InputReader.read('Inputs/1.txt')[0].replace(' ', '').split(',')
     for move in data:
         r.move(move[0], int(move[1:]))
     print("Total distance: {0}".format(r.distance))

@@ -1,5 +1,4 @@
 
-
 def read(filename):
 
     with open(filename) as f:
