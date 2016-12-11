@@ -53,6 +53,7 @@ class keypadB:
             elif char is 'D' and tempy < 4:
                 tempy += 1
 
+            # if new key is not a valid key, reject it and stay on last key
             if not self.pad[tempy][tempx] is '':
                 self.x = tempx
                 self.y = tempy
@@ -66,8 +67,8 @@ def run():
     for line in data:
         pad.findKey(line)
         padb.findKey(line)
-    print pad.code
-    print padb.code
+    print("Code for keypad: {0}".format(pad.code))
+    print("Code for keypad b: {0}".format(padb.code))
 
 
 if __name__ == "__main__":

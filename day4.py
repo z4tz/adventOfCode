@@ -14,8 +14,6 @@ class roomChecker:
             if 'northpole' in self.shiftString(chars, int(roomId)):
                 print("northpole object storage in room with ID: {0}".format(roomId))
 
-
-
     def calcChecksum(self,chars):
         # creates the checksum string made from the 5 most commonly occurring characters
         chars = chars.replace('-', '')
@@ -50,7 +48,7 @@ class roomChecker:
 
     def shiftChar(self,char,ammount):
         # 26 chars, a = 97
-        newChar = chr(97 + (ord(char)- 97 + ammount) % 26)
+        newChar = chr(97 + (ord(char) - 97 + ammount) % 26)
         return newChar
 
 

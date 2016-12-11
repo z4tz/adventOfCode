@@ -15,17 +15,14 @@ def run():
     data = InputReader.read("Inputs/3.txt")
     comparer = triangleComparer()
     for line in data:
-
         comparer.compare([int(line[0:5]), int(line[6:10]), int(line[11:15])])
-    print comparer.valid
+    print("Number of valid triangles: {0}".format(comparer.valid))
 
     comparer2 = triangleComparer()
     for index in range(0,len(data)/3):
         for col in range(0, 3):
-
             comparer2.compare([int(data[index*3][1+col*5:5+col*5]), int(data[index*3+1][1+col*5:5+col*5]), int(data[index*3+2][1+col*5:5+col*5])])
-
-    print comparer2.valid
+    print("Number of valid triangles using c: {0}".format(comparer2.valid))
 
 
 if __name__ == "__main__":
