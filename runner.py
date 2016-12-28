@@ -1,7 +1,7 @@
 import timeit
 import os
 
-days = xrange(6, 7)
+days = xrange(7, 8)
 
 
 if __name__ == '__main__':
