@@ -17,6 +17,7 @@ class decompressor:
         self.currentPosition = 0
         self.compressedText = text
         textLength = len(self.compressedText)
+        completion=0
 
         while self.currentPosition < textLength:
             if self.compressedText[self.currentPosition] == '(':
@@ -24,6 +25,11 @@ class decompressor:
             else:
                 self.textList.append(self.compressedText[self.currentPosition])
                 self.currentPosition += 1
+
+            percent = int(self.currentPosition*1.0/textLength*100)
+            if percent != completion:
+                completion=percent
+                print("{0}%".format(completion))
 
         if len(self.compressedText) < 2000000000:
             self.decompressedText = ''.join(self.textList)
@@ -57,6 +63,7 @@ def run():
     data = data[0]
     decomp = decompressor()
     while '(' in data:
+        print("{0} MB".format( sys.getsizeof(data)/1000000))
         data = decomp.start(data)
         print len(data)
 
