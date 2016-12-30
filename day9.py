@@ -1,11 +1,10 @@
-import gc
-import objgraph
 import sys
-import resource
-
 import InputReader
 
-
+"""
+Horrible solution made just to see if it worked, took about 25GB of memory to decompress whole thing but it worked
+TODO: Remake with a recursive version that only counts values and doesnt store the actual string.
+"""
 class decompressor:
     def __init__(self):
         self.compressedText = ""
@@ -47,15 +46,13 @@ class decompressor:
         return self.decompressedText
 
     def expandTextHere(self):
-        endPosition = self.currentPosition
-        while not self.compressedText[endPosition] == ')':
-            endPosition += 1
-        split = self.compressedText[self.currentPosition + 1:endPosition].split('x')
-        extendLength = int(split[0])
-        repeat = int(split[1])
-        self.textList.append(self.compressedText[endPosition + 1:endPosition + extendLength + 1] * repeat)
+        self.endPosition = self.currentPosition
+        while not self.compressedText[self.endPosition] == ')':
+            self.endPosition += 1
+        self.split = self.compressedText[self.currentPosition + 1:self.endPosition].split('x')
+        self.textList.append(self.compressedText[self.endPosition + 1:self.endPosition + int(self.split[0]) + 1] * int(self.split[1]))
 
-        self.currentPosition = endPosition + extendLength + 1
+        self.currentPosition = self.endPosition + int(self.split[0]) + 1
 
 
 def run():
